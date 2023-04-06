@@ -1,6 +1,8 @@
-import {useState} from "react";
-const PrintTodos = ({setTodo}) =>{
+import {useState,useContext} from "react";
+import AddContext from "./AddContext";
+const AddTodos = () =>{
     let [title,setTitle] = useState("");
+    let [todo,setTodo] = useContext(AddContext);
     return(
         <div>
             <h1>~~~ ToDos List ~~~</h1>
@@ -9,9 +11,9 @@ const PrintTodos = ({setTodo}) =>{
             <label>
                 <input value = {title} onChange={(e)=>setTitle(e.target.value)}/>
             </label>
-            <button onClick={()=>setTodo((todo)=> [...todo,title])}> ADD{" "} </button>
+            <button onClick={()=>setTodo([...todo,title])}> ADD </button>
         </div>
 
     )
 }
-export default PrintTodos;
+export default AddTodos;

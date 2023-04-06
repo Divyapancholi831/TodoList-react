@@ -1,4 +1,7 @@
-const PrintTOdos = ( {todo}) => {
+import {useContext} from "react";
+import AddContext from "./AddContext";
+const PrintTOdos = () => {
+    let [todo,setTodo] = useContext(AddContext);
     return(
         <div>
                 <table>
