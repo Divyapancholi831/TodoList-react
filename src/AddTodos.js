@@ -1,7 +1,9 @@
 import {useState,useContext} from "react";
 import AddContext from "./AddContext";
+import { Modal } from "./Modal";
 const AddTodos = () =>{
     let [title,setTitle] = useState("");
+    let [showModal,setShowModal] =useState(false);
     let [todo,setTodo] = useContext(AddContext);
     return(
         <div>
@@ -11,7 +13,16 @@ const AddTodos = () =>{
             <label>
                 <input value = {title} onChange={(e)=>setTitle(e.target.value)}/>
             </label>
-            <button onClick={()=>setTodo([...todo,title])}> ADD </button>
+            <button onClick={()=>setShowModal(true)}> ADD </button>
+            {showModal ? (
+                <Modal>
+                    <h1>You Wanted to add "{title}"</h1>
+                    <button onClick={()=>{setTodo([...todo,title]); setTitle(""); setShowModal(false)}}>yes </button>
+                    <button onClick={()=>setShowModal(false)}> No</button>
+                </Modal>
+            )
+            : null    
+            }
         </div>
 
     )
