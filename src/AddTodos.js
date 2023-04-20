@@ -15,7 +15,7 @@ const AddTodos = () =>{
             <label>
                 <input className="todo-input" placeholder="Add a todo" name="text" type="text" value = {title} onChange={(e)=>setTitle(e.target.value)}/>
             </label>
-            <button className="todo-button" onClick={()=>setShowModal(true)}> ADD </button>
+            <button className="todo-button" disabled={!title} onClick={()=>setShowModal(true)}> ADD </button>
             {showModal ? (
                 <Modal>
                     <h1>You Wanted to add "{title}"</h1>
