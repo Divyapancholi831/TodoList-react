@@ -1,6 +1,8 @@
 import {useState,useContext} from "react";
 import AddContext from "./AddContext";
 import { Modal } from "./Modal";
+import "./styles.css";
+
 const AddTodos = () =>{
     let [title,setTitle] = useState("");
     let [showModal,setShowModal] =useState(false);
@@ -11,9 +13,9 @@ const AddTodos = () =>{
             <br/>
         
             <label>
-                <input value = {title} onChange={(e)=>setTitle(e.target.value)}/>
+                <input className="todo-input" placeholder="Add a todo" name="text" type="text" value = {title} onChange={(e)=>setTitle(e.target.value)}/>
             </label>
-            <button onClick={()=>setShowModal(true)}> ADD </button>
+            <button className="todo-button" onClick={()=>setShowModal(true)}> ADD </button>
             {showModal ? (
                 <Modal>
                     <h1>You Wanted to add "{title}"</h1>
