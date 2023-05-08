@@ -3,7 +3,11 @@ import AddContext from "./AddContext";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "./Modal";
 import "./styles.css";
-import { add_String_action, add_title_action, delete_todo_action } from "./redux/Action";
+import {
+  add_String_action,
+  add_title_action,
+  delete_todo_action,
+} from "./redux/Action";
 
 const PrintTOdos = () => {
   //   let [todo, setTodo] = useContext(AddContext);
@@ -13,6 +17,7 @@ const PrintTOdos = () => {
   const todos = useSelector((todolist) => todolist.Todos);
   const string = useSelector((todolist) => todolist.string);
   console.log("store", todos);
+  console.log("string", string);
   return (
     <div className="todo-app">
       {/* <table>
@@ -29,7 +34,12 @@ const PrintTOdos = () => {
       {todos.map((element, index) => (
         <div className="output">
           <div className="outputItem" id={index}>
-            <span onClick={() => {dispatch(add_title_action(element)); dispatch(add_String_action(index))}}>
+            <span
+              onClick={() => {
+                dispatch(add_title_action(element));
+                dispatch(add_String_action(index));
+              }}
+            >
               {element}
             </span>
           </div>
